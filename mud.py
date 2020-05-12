@@ -42,8 +42,8 @@ filename = str(name) + '.mp3'
 print('Название файла = ' + filename)
 tts.save(filename)
 
-#velocidad_X = 1.5 # No puede estar por debajo de 1.0
-#sound = AudioSegment.from_file(filename)
-#so = sound.speedup(velocidad_X, 150, 25)
-#so.export(filename[:-4] + '_speed.mp3', format = 'mp3')
+velocidad_X = 1.5 # No puede estar por debajo de 1.0
+sound = AudioSegment.from_file(filename)
+so = sound.speedup(velocidad_X, 150, 25)
+so.export(filename[:-4] + '_speed.mp3', format = 'mp3')
 driver.close()
