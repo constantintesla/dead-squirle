@@ -12484,3 +12484,4 @@ venv/Lib/site-packages/__pycache__/decorator.cpython-38.pyc
 venv/Lib/site-packages/__pycache__/crayons.cpython-38.pyc
 venv/Lib/site-packages/__pycache__/configparser.cpython-38.pyc
 venv/Lib/site-packages/__pycache__/_soundfile.cpython-38.pyc
+*.mp3
