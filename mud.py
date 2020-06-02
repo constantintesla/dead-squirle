@@ -3,8 +3,6 @@ from random import randint
 
 from gtts import gTTS
 from pydub import AudioSegment
-# driver = webdriver.Chrome(ChromeDriverManager().install())
-# driver = webdriver.Chrome()
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
