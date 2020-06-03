@@ -5,6 +5,7 @@ from gtts import gTTS
 from pydub import AudioSegment
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+import playsound
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
 name = randint(0, 2000)
@@ -33,7 +34,7 @@ if not textts:
     print("Пустой комент")
     choosecomment = randint(0, commentscount)
     textts = ctext1[choosecomment].text
-
+driver.close()
 tts = gTTS(text=textts, lang='ru')
 filename = str(name) + '.mp3'
 print('Название файла = ' + filename)
@@ -44,8 +45,13 @@ with open(dbname, "w", encoding="utf-8") as text_file:
     text_file.write(commenttxt)
     text_file.close()
 
-velocidad_X = 1.5  # No puede estar por debajo de 1.0
-sound = AudioSegment.from_file(filename)
-so = sound.speedup(velocidad_X, 150, 25)
-so.export(filename[:-4] + '_speed.mp3', format='mp3')
-driver.close()
+#velocidad_X = 1.5  # No puede estar por debajo de 1.0
+#sound = AudioSegment.from_file(filename)
+#so = sound.speedup(velocidad_X, 150, 25)
+#so.export(filename[:-4] + '_speed.mp3', format='mp3')
+
+playsound.playsound(filename, True)
+
+
+
+
