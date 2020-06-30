@@ -6,8 +6,15 @@ from pydub import AudioSegment
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import playsound
+from selenium.webdriver.chrome.options import Options
+from pydub import AudioSegment
+from pydub.playback import play
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(options=chrome_options)
+
 name = randint(0, 2000)
 url = "https://www.newsvl.ru/vlad/2020/05/28/190445/#comments"
 dbname = url.replace('https://www.newsvl.ru/', '').replace('/','-')
@@ -15,6 +22,7 @@ print('Название базы = ' + dbname)
 driver.get(url)
 driver.implicitly_wait(2)
 ctext1 = driver.find_elements_by_class_name("comment-text")
+print(ctext1)
 commentscount = len(ctext1)-1
 print('количество коментов = ' + str(commentscount))
 
@@ -51,7 +59,6 @@ with open(dbname, "w", encoding="utf-8") as text_file:
 #so.export(filename[:-4] + '_speed.mp3', format='mp3')
 
 playsound.playsound(filename, True)
-
 
 
 
