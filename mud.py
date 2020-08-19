@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 from random import randint
-
 from gtts import gTTS
 from pydub import AudioSegment
-from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import playsound
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+chrome_options = Options()
+#chrome_options.add_argument("--headless")
+driver = webdriver.Chrome("C:/bin/chromedriver.exe" ,options=chrome_options)
+
 name = randint(0, 2000)
-url = "https://www.newsvl.ru/vlad/2020/05/28/190445/#comments"
+url = "https://www.newsvl.ru/vlad/2020/07/02/191251/#comments"
 dbname = url.replace('https://www.newsvl.ru/', '').replace('/','-')
 print('Название базы = ' + dbname)
 driver.get(url)
@@ -39,6 +43,7 @@ tts = gTTS(text=textts, lang='ru')
 filename = str(name) + '.mp3'
 print('Название файла = ' + filename)
 tts.save(filename)
+playsound.playsound(filename, True)
 
 dbname = dbname + ".txt"
 with open(dbname, "w", encoding="utf-8") as text_file:
@@ -50,7 +55,7 @@ with open(dbname, "w", encoding="utf-8") as text_file:
 #so = sound.speedup(velocidad_X, 150, 25)
 #so.export(filename[:-4] + '_speed.mp3', format='mp3')
 
-playsound.playsound(filename, True)
+
 
 
 
